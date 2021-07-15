@@ -13,6 +13,7 @@ global base_unit
 global format_calc_val
 global calc_val 
 
+#function to change values of Comboboxes
 def change_units(event):
     if unit_type_select.get() == "Volume":
         start_unit.config(values=volume_options)
