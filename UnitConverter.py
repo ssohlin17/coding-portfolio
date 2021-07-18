@@ -81,11 +81,8 @@ root.columnconfigure(1, weight=1)
 root.columnconfigure(2, weight=1)
 
 unit_classes = ["Volume", "Weight", "Distance"]
-# volume_options = ["mL", "L", "fl. oz.", "cups", "pints", "quarts", "gallons", "Tbsp", "tsp"]
 volume_base = {"mL": 1, "L": 1000, "fl. oz.": 29.754, "cups": 240, "pints": 473.176, "quarts": 946.353, "gallons": 3785.41, "Tbsp": 15, "tsp": 5}
-# weight_options = ["mg", "g", "kg", "oz.", "lbs", "US ton"]
 weight_base = {"mg": 1, "g": 1_000, "kg": 1_000_000, "oz.": 28349.5, "lbs.": 453592, "US ton": 907200000}
-# distance_options = ["mm", "cm", "m", "km", "inches", "feet", "yards", "miles"]
 distance_base = {"mm": 1, "cm": 10, "m": 1_000, "km": 1_000_000, "inches": 25.4, "feet": 304.8, "yards": 914.4, "miles": 1609000}
 
 prompt_label = tk.Label(mainframe, text="Select your units, type your value, and press the button", bg="#548CA8").grid(row=0, columnspan=3)
