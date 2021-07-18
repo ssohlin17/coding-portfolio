@@ -4,6 +4,11 @@ import tkinter as tk
 from tkinter import Entry, Label, OptionMenu, StringVar, Text, ttk
 from tkinter.constants import NONE
 
+# Room for improvement
+# Lock combobox values so users can't type in units that I don't have values for 
+# Add additional unit categories
+# Expand current unit categories to include more units e.g. mcg, nm
+
 global unit_type_select 
 global start_unit 
 global start_value 
