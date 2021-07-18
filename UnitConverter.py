@@ -19,6 +19,8 @@ global weight_units
 
 #function to change values of Comboboxes
 def change_units(event):
+    # create and append the keys of the dictionary to the list
+    # set the values of the list to the combobox
     volume_units = []
     distance_units = []
     weight_units = []
@@ -39,35 +41,33 @@ def change_units(event):
         convert_unit_to.config(values=weight_units)
 
 def calc_units():
+    # convert the starting unit to a base unit
+    # convert the base unit to the desired unit
+    # format the value
+    #set value in the converted entry field
     if unit_type_select.get() == "Volume":
         #base unit of measure = mL
-        #convert to base unit
         for key in volume_base.keys():
             if base_unit.get() == key:
                 calc_val = float(start_value.get()) * volume_base[key]
-        #conversion happens here
         for key in volume_base.keys():  
             if converted_unit.get() == key:
                 calc_val = float(calc_val / volume_base[key])
         
     if unit_type_select.get() == "Weight":
         #base unit of measure = mg
-        #convert to base unit
         for key in weight_base.keys():
             if base_unit.get() == key:
                 calc_val = float(start_value.get()) * weight_base[key]
-        #final conversion happens here
         for key in weight_base.keys():
             if converted_unit.get() == key:
                 calc_val = float(calc_val / weight_base[key])
 
     if unit_type_select.get() == "Distance":
         #base unit of measure = mm
-        #convert to base unit
         for key in distance_base.keys():
             if base_unit.get() == key:
                 calc_val = float(start_value.get()) * distance_base[key]
-        #final conversion happens here
         for key in distance_base.keys():
             if converted_unit.get() == key:
                 calc_val = float(calc_val / weight_base[key])
