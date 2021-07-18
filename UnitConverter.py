@@ -38,115 +38,34 @@ def change_units(event):
         start_unit.config(values=weight_units)
         convert_unit_to.config(values=weight_units)
 
-# # def calc_units():
-# #     if unit_type_select.get() == "Volume":
-# #         #base unit of measure = mL
-#         # if base_unit.get() == "tsp":
-#         #     calc_val = float(start_value.get()) * 5
-#         # elif base_unit.get() == "L":
-#         #     calc_val = float(start_value.get()) * 1000
-#         # elif base_unit.get() == "fl. oz.":
-#         #     calc_val = float(start_value.get()) * 29.754
-#         # elif base_unit.get() == "cups":
-#         #     calc_val = float(start_value.get())* 240
-#         # elif base_unit.get() == "pints":
-#         #     calc_val = float(start_value.get()) * 473.176
-#         # elif base_unit.get() == "quarts":
-#         #     calc_val = float(start_value.get()) * 946.353
-#         # elif base_unit.get() == "gallons":
-#         #     calc_val = float(start_value.get()) * 3785.41
-#         # elif base_unit.get() == "Tbsp":
-#         #     calc_val = float(start_value.get()) * 15
-#         # else:
-#         #     calc_val = float(start_value.get())
-
-#         # if converted_unit.get() == "L":
-#         #     calc_val = float(calc_val / 1000)
-#         # elif converted_unit.get() == "fl. oz.":
-#         #     calc_val = float(calc_val / 29.574)
-#         # elif converted_unit.get() == "cups":
-#         #     calc_val = float(calc_val / 240)
-#         # elif converted_unit.get() == "pints":
-#         #     calc_val = float(calc_val / 473.176)
-#         # elif converted_unit.get() == "quarts":
-#         #     calc_val = float(calc_val / 946.353)
-#         # elif converted_unit.get() == "gallons":
-#         #     calc_val = float(calc_val / 3785.41)
-#         # elif converted_unit.get() == "Tbsp":
-#         #     calc_val = float(calc_val / 15)
-#         # elif converted_unit.get() == "tsp":
-#         #     calc_val = float(calc_val / 5)
-#         # else:
-#         #     calc_val = float(calc_val)
-
-#     if unit_type_select.get() == "Weight":
-#         #base unit of measure = g
-#         # if base_unit.get() == "mg":
-#         #     calc_val = float(start_value.get()) / 1000
-#         # elif base_unit.get() == "kg":
-#         #     calc_val = float(start_value.get()) * 1000
-#         # elif base_unit.get() == "oz.":
-#         #     calc_val = float(start_value.get()) * 28.3495
-#         # elif base_unit.get() == "lbs":
-#         #     calc_val = float(start_value.get()) * 453.592
-#         # elif base_unit.get() == "US ton":
-#         #     calc_val = float(start_value.get()) * 907185
-#         # else:
-#         #     calc_val = float(start_value.get())
+def calc_units():
+    if unit_type_select.get() == "Volume":
+        #base unit of measure = mL
+        for key in volume_base.keys():
+            if base_unit.get() == key:
+                calc_val = float(start_value.get()) * volume_base[key]
+        for key in volume_base.keys():  
+            if converted_unit.get() == key:
+                calc_val = float(calc_val / volume_base[key])
         
-#         # if converted_unit.get() == "mg":
-#         #     calc_val = float(calc_val * 1000)
-#         # elif converted_unit.get() == "kg":
-#         #     calc_val = float(calc_val / 1000)
-#         # elif converted_unit.get() == "oz.":
-#         #     calc_val = float(calc_val / 28.3495)
-#         # elif converted_unit.get() == "lbs":
-#         #     calc_val = float(calc_val / 453.592)
-#         # elif converted_unit.get() == "US ton":
-#         #     calc_val = float(calc_val / 907185)
-#         # else:
-#         #     calc_val = float(calc_val)
-
-#     if unit_type_select.get() == "Distance":
-#         #base unit of measure = m
-#         # if base_unit.get() == "mm":
-#         #     calc_val = float(start_value.get()) / 1000
-#         #     print("base: "+ str(calc_val))
-#         # elif base_unit.get() == "cm":
-#         #     calc_val = float(start_value.get()) / 100
-#         # elif base_unit.get() == "km":
-#         #     calc_val = float(start_value.get()) * 1000
-#         # elif base_unit.get() == "inches":
-#         #     calc_val = float(start_value.get()) / 39.37
-#         # elif base_unit.get() == "feet":
-#         #     calc_val = float(start_value.get()) * 3.28
-#         # elif base_unit.get() == "yards":
-#         #     calc_val = float(start_value.get()) / 1.0936
-#         # elif base_unit.get() == "miles":
-#         #     calc_val = float(start_value.get()) * 1609.34
-#         # else:
-#         #     calc_val = float(start_value.get())
-#         # print("base before conversion: " + str(calc_val))
-#         # if converted_unit.get() == "mm":
-#         #     calc_val = float(calc_val * 1000)
-#         #     print("convert mm: " + str(calc_val))
-#         # elif converted_unit.get() == "cm":
-#         #     calc_val = float(calc_val * 100)
-#         #     print("convert cm: " + str(calc_val))
-#         # elif converted_unit.get() == "km":
-#         #     calc_val = float(calc_val / 1000)
-#         # elif converted_unit.get() == "inches":
-#         #     calc_val = float(calc_val * 39.3701)
-#         # elif converted_unit.get() == "feet":
-#         #     calc_val = float(calc_val / 3.280)
-#         # elif converted_unit.get() == "yards":
-#         #     calc_val = float(calc_val * 1.09361)
-#         # elif converted_unit.get() == "miles":
-#         #     calc_val = float(calc_val / 1609.34)
-#         # else:
-#         #     calc_val = float(calc_val)
-#     format_calc_val = "{:.3f}".format(calc_val)
-#     converted_value.set(format_calc_val)
+    if unit_type_select.get() == "Weight":
+#         #base unit of measure = mg
+        for key in weight_base.keys():
+            if base_unit.get() == key:
+                calc_val = float(start_value.get()) * weight_base[key]
+        for key in weight_base.keys():
+            if converted_unit.get() == key:
+                calc_val = float(calc_val / weight_base[key])
+    if unit_type_select.get() == "Distance":
+        #base unit of measure = mm
+        for key in distance_base.keys():
+            if base_unit.get() == key:
+                calc_val = float(start_value.get()) * distance_base[key]
+        for key in distance_base.keys():
+            if converted_unit.get() == key:
+                calc_val = float(calc_val / weight_base[key])
+    format_calc_val = "{:.3f}".format(calc_val)
+    converted_value.set(format_calc_val)
         
 
 
@@ -165,9 +84,9 @@ unit_classes = ["Volume", "Weight", "Distance"]
 # volume_options = ["mL", "L", "fl. oz.", "cups", "pints", "quarts", "gallons", "Tbsp", "tsp"]
 volume_base = {"mL": 1, "L": 1000, "fl. oz.": 29.754, "cups": 240, "pints": 473.176, "quarts": 946.353, "gallons": 3785.41, "Tbsp": 15, "tsp": 5}
 # weight_options = ["mg", "g", "kg", "oz.", "lbs", "US ton"]
-weight_base = {"mg": 1000, "g": 1, "kg": 1000, "oz.": 28.3495, "lbs.": 453.592, "US ton": 907185}
+weight_base = {"mg": 1, "g": 1_000, "kg": 1_000_000, "oz.": 28349.5, "lbs.": 453592, "US ton": 907200000}
 # distance_options = ["mm", "cm", "m", "km", "inches", "feet", "yards", "miles"]
-distance_base = {"mm": 1000, "cm": 100, "m": 1, "km": 1000, "inches": 39.3701, "feet": 3280, "yards": 1.0936, "miles": 1609.34}
+distance_base = {"mm": 1, "cm": 10, "m": 1_000, "km": 1_000_000, "inches": 25.4, "feet": 304.8, "yards": 914.4, "miles": 1609000}
 
 prompt_label = tk.Label(mainframe, text="Select your units, type your value, and press the button", bg="#548CA8").grid(row=0, columnspan=3)
 select_type_label = tk.Label(mainframe, text="Select unit type", bg="#548CA8").grid(row=1, column=0, padx=5, pady=10)
@@ -196,6 +115,6 @@ converted_entry = Entry(mainframe, width=10, textvariable=converted_value).grid(
 convert_unit_to = ttk.Combobox(mainframe, width=10, textvariable=converted_unit)
 convert_unit_to.grid(row=3, column=2)
 
-calc_button = tk.Button(mainframe, text="Calculate")#, command=calc_units)
+calc_button = tk.Button(mainframe, text="Calculate", command=calc_units)
 calc_button.grid(row=4, column=1, pady=10)
 root.mainloop()
