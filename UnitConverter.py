@@ -107,7 +107,7 @@ select_type_label = tk.Label(mainframe, text="Select unit type", bg="#548CA8").g
 unit_type_select = StringVar()
 
 #have to create the combo box and then place it (grid()) on a second line so that it isn't a NoneType object, gives it value
-unit_class = ttk.Combobox(mainframe, width=10, values=unit_classes, textvariable=(unit_type_select))
+unit_class = ttk.Combobox(mainframe, width=10, values=unit_classes, textvariable=(unit_type_select), state="readonly")
 unit_class.grid(row=1, column=1, sticky="WE")
 unit_class.bind("<<ComboboxSelected>>", change_units)
 
@@ -119,7 +119,7 @@ start_value = StringVar()
 start_label = Label(mainframe, text="Start Value", bg="#548CA8")
 start_label.grid(row=2, column=0)
 start_entry = Entry(mainframe, width=10, textvariable=start_value).grid(row=2, column=1, padx=5, pady=5)
-start_unit = ttk.Combobox(mainframe, textvariable=base_unit, width=10)
+start_unit = ttk.Combobox(mainframe, textvariable=base_unit, width=10, state="readonly")
 start_unit.grid(row=2, column=2, padx=5, pady=5)
 
 #convert to units and values to be stored in this variable
@@ -130,7 +130,8 @@ converted_value = StringVar()
 converted_label = Label(mainframe, text="Converted Value", bg="#548CA8")
 converted_label.grid(row=3, column=0)
 converted_entry = Entry(mainframe, width=10, textvariable=converted_value).grid(row=3, column=1)
-convert_unit_to = ttk.Combobox(mainframe, width=10, textvariable=converted_unit)
+convert_unit_to = ttk.Combobox(mainframe, width=10, textvariable=converted_unit, state="readonly")
+
 convert_unit_to.grid(row=3, column=2)
 
 #creates a button to run the conversion 
