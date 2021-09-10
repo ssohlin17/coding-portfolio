@@ -1,9 +1,11 @@
 # TODO GUI
 from os import sep
 import tkinter as tk
-from tkinter import Entry, Label, Button, Listbox, StringVar
+import os.path as path
+from tkinter import Entry, Label, Button, Listbox, PhotoImage, StringVar, Tk
 from tkinter.constants import END, INSIDE, TRUE
 from typing import Text
+
 
 
 
@@ -35,21 +37,19 @@ def updateFile():
         close file when done
     """
     my_file = open(task_list_file, "w")
+    
     for item in task_list_box.get(0, END):
-        my_file.writelines(str(item) + "\n")
+        my_file.writelines(item + "\n")
     my_file.flush()    
     my_file.close()
-global task_list    
 
+    #not needed 
+    confirm_label = Label(mainframe, text="Saved!", fg="#07e320", bg="#828282").grid(row=1, column=0, columnspan=3, pady=(10,10))
+
+global task_list    
+global task_list_box
 #file to store tasks
 task_list_file = "\coding-portfolio\current_tasks.txt"
-
-#if file exists, read text and store into a list, otherwise keep going
-if task_list_file:
-    tlf = open(task_list_file, "r")
-    existing_tasks = tlf.read().split("\n")
-else:
-    pass
 
 root = tk.Tk()
 root.title("To Do List")
@@ -66,16 +66,19 @@ root.rowconfigure(1, weight=1)
 root.columnconfigure(2, weight=1)
 root.rowconfigure(2, weight=1)
 
+save_icon = PhotoImage(file="images/save-icon.png")
+add_icon = PhotoImage(file="images/add-button.png")
+delete_icon = PhotoImage(file="images/trash-bin.png")
 #button that will save elements in listbox to a txt file
-save_button = tk.Button(mainframe, text="Save", highlightbackground="#07f55a", padx=10, pady=10, command=updateFile)
+save_button = tk.Button(mainframe, text="Save", image=save_icon, highlightbackground="#6e6e6e", borderwidth=0, command=updateFile)
 save_button.grid(row=0, column=1, sticky="N", padx=(50,10), pady=(15,15))
 
 #button to remove tasks when they select it in the listbox and select the delete button
-remove_tasks = tk.Button(mainframe, text="Delete", highlightbackground="#e01212", padx=10, pady=10, command=deleteTasks)
+remove_tasks = tk.Button(mainframe, text="Delete", image=delete_icon, highlightbackground="#e01212", borderwidth=0, command=deleteTasks)
 remove_tasks.grid(row=0, column=2, sticky="N", padx=(200, 10), pady=(15,15))
 
 #button to add tasks
-add_tasks = tk.Button(mainframe, text="+", highlightbackground="#0013b5", padx=10, pady=10, command=addTasks)
+add_tasks = tk.Button(mainframe, text="+", image=add_icon, highlightbackground="#0013b5", borderwidth=0, command=addTasks)
 add_tasks.grid(row=0, column=3, sticky="NE", pady=(15,15))
 
 #variable to capture the text in the entry box
@@ -83,15 +86,26 @@ new_task = StringVar()
 
 #entry widget where user will type in tasks
 task_entry = Entry(mainframe, textvariable=new_task)
-task_entry.grid(row=1, column=0, columnspan=3)
+task_entry.grid(row=2, column=0, columnspan=3)
 
 #widget to hold tasks
 task_list_box = Listbox(mainframe, background="#18261c", fg="#ebedeb")
-task_list_box.grid(row=2, column=0, columnspan=3)
+task_list_box.grid(row=3, column=0, columnspan=3)
 
-#load existings files if current_tasks.txt exists
-if len(existing_tasks) > 0:
-    for item in existing_tasks:
-        task_list_box.insert(END, item)
+#if file exists, read text and store into a list, otherwise create file and keep going
+if path.isfile(task_list_file):
+    tlf = open(task_list_file, "r")
+    existing_tasks = tlf.read().split("\n")
+    num_tasks = len(existing_tasks)
+    if (num_tasks - 1) > 0:
+        for item in existing_tasks:
+            if item == existing_tasks[(num_tasks - 1)]:
+                break
+            task_list_box.insert(END, item)
+else:
+    open(task_list_file, "w")
+    pass
+
+
 
 root.mainloop()
