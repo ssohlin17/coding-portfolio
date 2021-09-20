@@ -6,9 +6,6 @@ from tkinter import Entry, Label, Button, Listbox, PhotoImage, StringVar, Tk
 from tkinter.constants import END, INSIDE, TRUE
 from typing import Text
 
-
-
-
 def addTasks():
     """
     Arguments:
@@ -43,11 +40,6 @@ def updateFile():
     my_file.flush()    
     my_file.close()
 
-    #not needed 
-    confirm_label = Label(mainframe, text="Saved!", fg="#07e320", bg="#828282").grid(row=0, column=0, columnspan=5, pady=(10,10))
-
-global task_list    
-global task_list_box
 #file to store tasks
 task_list_file = "\coding-portfolio\current_tasks.txt"
 
