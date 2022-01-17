@@ -22,7 +22,6 @@ from smtplib import SMTP
 
 def send_email(subj, msg):
     #sending email to myself via secondary gmail account
-
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.login(config.FROM_EMAIL_ADDRESS, config.PASSWORD) 
