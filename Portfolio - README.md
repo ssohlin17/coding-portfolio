@@ -1,0 +1,6 @@
+# coding-portfolio
+In this portfolio you will see a few types of small projects I have worked on independently. These aren't the most complex of projects but show that I am able to work with Python in various ways from a simple web scraping script to developing a GUI for a program. I know that I can improve upon these projects by adding more features and functionality such as my UnitConverter.py could have currency info and link it to an API to get real-time currency conversions.
+
+Most recently I created the web scraping script that will send me an email of the top articles as a hyperlink from Coin Desk and Coin Telegraph to allow me to get daily updates without having to go search for it. An improvement would be to have the script send the links via text or to extract the first few lines or paragraph of an article and include it in the email. 
+
+While I am finishing up my last semester at Walsh College, I am continuing to find ways to improve my skills and understand software development at greater detail. I will be working on other projects with Python and get back to some Java development. Walsh has introduced me to Python when I got there and I truly like the language. The instructor has shown me a wide variety of use cases with Python that I am interested in incorporating for future projects.
